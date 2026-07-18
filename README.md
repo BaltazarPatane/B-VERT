@@ -99,7 +99,7 @@ $$
 
 ### Medición mediante interrupciones
 
-&emsp; Durante el funcionamiento normal, la duración del pulso `ECHO` del HC-SR04 se captura mediante una **interrupción por cambio de estado** en el pin D3. En el flanco ascendente, la rutina registra el instante de inicio con `micros()`; en el flanco descendente, calcula la duración total del pulso y marca la disponibilidad de una nueva medición. De esta manera, el microcontrolador puede continuar atendiendo la máquina de estados, el display y las señales sonoras sin permanecer bloqueado esperando la respuesta del sensor.
+&emsp; Durante el funcionamiento normal, la duración del pulso `ECHO` del HC-SR04 se captura mediante una **interrupción por cambio de estado** en el pin D3. En el flanco ascendente, la rutina registra el instante de inicio y en el flanco descendente, calcula la duración total del pulso y marca la disponibilidad de una nueva medición. De esta manera, el microcontrolador puede continuar atendiendo la máquina de estados, el display y las señales sonoras sin permanecer bloqueado esperando la respuesta del sensor.
 
 &emsp; Las variables compartidas entre la interrupción y el programa principal se declaran como `volatile`. Además, el firmware deshabilita brevemente las interrupciones al copiar o reiniciar esos datos, creando secciones críticas que evitan lecturas parciales o inconsistentes.
 
