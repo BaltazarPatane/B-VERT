@@ -13,6 +13,8 @@
   <img src="https://img.shields.io/badge/Fabricación-Impresión%203D-555555?style=for-the-badge" alt="Impresión 3D">
 </p>
 
+&emsp; 
+
 <p align="center">
   <img src="Imagenes/Vista_Derecha.png" width="49%" alt="Vista derecha de B-VERT">
   <img src="Imagenes/Vista_Frontal.png" width="49%" alt="Vista frontal de B-VERT">
@@ -24,6 +26,7 @@
 
 > La lógica de B-VERT no toma decisiones a partir de una sola lectura: cada transición importante debe cumplir condiciones temporales y acumular mediciones consecutivas coherentes.
 
+&emsp; 
 
 ## Componentes electrónicos
 
@@ -37,6 +40,7 @@
 | **Power bank de 5 V** | Proporciona una fuente de energía portátil y recargable. |
 | **Placa experimental y cableado** | Interconectan y distribuyen la alimentación entre los módulos. |
 
+&emsp; 
 
 ## Diagrama de conexiones
 
@@ -49,36 +53,37 @@ La documentación del hardware se encuentra disponible en los siguientes formato
 - [Ver esquema eléctrico en PDF](Hardware/Esquema_B-VERT.pdf)
 - [Abrir el proyecto editable de Fritzing](Hardware/Esquema_B-VERT.fzz)
 
+&emsp; 
 
 ## Diseño mecánico e impresión 3D
 
-<dd> La carcasa de B-VERT fue modelada en **Autodesk Fusion 360** y fabricada mediante impresión 3D. Su geometría consiste en una caja rectangular compacta de bordes y esquinas redondeados, pensada para proteger la electrónica y facilitar el transporte y la manipulación del equipo.
+&emsp; La carcasa de B-VERT fue modelada en **Autodesk Fusion 360** y fabricada mediante impresión 3D. Su geometría consiste en una caja rectangular compacta de bordes y esquinas redondeados, pensada para proteger la electrónica y facilitar el transporte y la manipulación del equipo.
 
-El diseño está dividido en dos cuerpos que se unen mediante una línea perimetral: una base que aloja el Arduino Nano, la placa experimental, el piezoeléctrico y el cableado, y una tapa superior que completa el cerramiento y permite acceder al interior durante el montaje o mantenimiento. En la cara frontal se incorporaron dos aberturas circulares alineadas con el emisor y el receptor del HC-SR04, manteniendo los transductores expuestos sin dejar desprotegido el resto del circuito.
+&emsp; El diseño está dividido en dos cuerpos que se unen mediante una línea perimetral: una base que aloja el Arduino Nano, la placa experimental, el piezoeléctrico y el cableado, y una tapa superior que completa el cerramiento y permite acceder al interior durante el montaje o mantenimiento. En la cara frontal se incorporaron dos aberturas circulares alineadas con el emisor y el receptor del HC-SR04, manteniendo los transductores expuestos sin dejar desprotegido el resto del circuito.
 
-La superficie superior incluye un alojamiento rectangular para el display de cuatro dígitos y el nombre **B-VERT** integrado en la propia pieza, lo que refuerza la identidad visual del prototipo sin necesidad de etiquetas externas. En uno de los laterales se agregó el recorte para el interruptor basculante de encendido y apagado. La distribución de las aberturas, los puntos de unión y el volumen interno fue planteada para mantener los componentes firmes, ordenar las conexiones y obtener un conjunto funcional con la menor cantidad posible de piezas.
+&emsp; La superficie superior incluye un alojamiento rectangular para el display de cuatro dígitos y el nombre **B-VERT** integrado en la propia pieza, lo que refuerza la identidad visual del prototipo sin necesidad de etiquetas externas. En uno de los laterales se agregó el recorte para el interruptor basculante de encendido y apagado. La distribución de las aberturas, los puntos de unión y el volumen interno fue planteada para mantener los componentes firmes, ordenar las conexiones y obtener un conjunto funcional con la menor cantidad posible de piezas.
 
 <p align="center">
   <img src="Imagenes/Diseno_3D.png" width="700" alt="Diseño 3D de la carcasa B-VERT">
 </p>
 
+&emsp; 
 
 ## Funcionamiento
 
-Al encenderse, B-VERT ejecuta una etapa de inicialización en la que comprueba que el sensor entregue valores válidos y que la persona esté ubicada dentro del rango previsto. Una vez completada esta verificación, el display indica que el equipo está listo y una señal sonora habilita el inicio del salto. Desde ese momento, el sensor ultrasónico realiza mediciones periódicas y el firmware analiza la continuidad de esas lecturas.
+&emsp; Al encenderse, B-VERT ejecuta una etapa de inicialización en la que comprueba que el sensor entregue valores válidos y que la persona esté ubicada dentro del rango previsto. Una vez completada esta verificación, el display indica que el equipo está listo y una señal sonora habilita el inicio del salto. Desde ese momento, el sensor ultrasónico realiza mediciones periódicas y el firmware analiza la continuidad de esas lecturas.
 
-El despegue no se confirma ante una única pérdida de señal. El sistema exige una secuencia sostenida de mediciones que indiquen la ausencia de la persona y conserva el instante de la primera lectura válida de esa secuencia como comienzo del vuelo. De forma equivalente, el aterrizaje solo se acepta cuando varias lecturas consecutivas vuelven a confirmar su presencia. Esta estrategia evita que un rebote, una reflexión deficiente o un pulso aislado del sensor sean interpretados como un salto completo.
+&emsp; El despegue no se confirma ante una única pérdida de señal. El sistema exige una secuencia sostenida de mediciones que indiquen la ausencia de la persona y conserva el instante de la primera lectura válida de esa secuencia como comienzo del vuelo. De forma equivalente, el aterrizaje solo se acepta cuando varias lecturas consecutivas vuelven a confirmar su presencia. Esta estrategia evita que un rebote, una reflexión deficiente o un pulso aislado del sensor sean interpretados como un salto completo.
 
-Cuando se confirma el aterrizaje, el tiempo transcurrido entre ambos eventos se utiliza para calcular la altura. El resultado final se muestra en el display y se acompaña con un aviso sonoro; luego de un breve intervalo, el sistema reinicia automáticamente el ciclo y queda preparado para una nueva medición.
+&emsp; Cuando se confirma el aterrizaje, el tiempo transcurrido entre ambos eventos se utiliza para calcular la altura. El resultado final se muestra en el display y se acompaña con un aviso sonoro; luego de un breve intervalo, el sistema reinicia automáticamente el ciclo y queda preparado para una nueva medición.
 
-La altura se obtiene mediante la ecuación del movimiento vertical:
+&emsp; La altura se obtiene mediante la ecuación del movimiento vertical (donde **$t$** es el tiempo total de vuelo y **$g$** es la aceleración de la gravedad):
 
 $$
 h = \frac{g \cdot t^2}{8}
 $$
 
-donde **$t$** es el tiempo total de vuelo y **$g$** es la aceleración de la gravedad.
-
+&emsp; 
 
 ### Máquina de estados
 
@@ -89,15 +94,19 @@ donde **$t$** es el tiempo total de vuelo y **$g$** es la aceleración de la gra
 | **`CONTANDO`** | Cronometra el tiempo de vuelo, actualiza la estimación en pantalla y espera la confirmación del aterrizaje. |
 | **`TERMINADO`** | Calcula y muestra la altura definitiva, reproduce el aviso sonoro y prepara un nuevo ciclo. |
 
-Esta separación hace que el comportamiento sea **determinista y fácil de mantener**: por ejemplo, una lectura asociada al aterrizaje solo puede procesarse mientras el sistema se encuentra en `CONTANDO`, y nunca durante la inicialización o antes de haber confirmado un despegue.
+&emsp; Esta separación hace que el comportamiento sea **determinista y fácil de mantener**: por ejemplo, una lectura asociada al aterrizaje solo puede procesarse mientras el sistema se encuentra en `CONTANDO`, y nunca durante la inicialización o antes de haber confirmado un despegue.
 
+&emsp; 
 
 ### Medición mediante interrupciones
 
-Durante el funcionamiento normal, la duración del pulso `ECHO` del HC-SR04 se captura mediante una **interrupción por cambio de estado** en el pin D3. En el flanco ascendente, la rutina registra el instante de inicio con `micros()`; en el flanco descendente, calcula la duración total del pulso y marca la disponibilidad de una nueva medición. De esta manera, el microcontrolador puede continuar atendiendo la máquina de estados, el display y las señales sonoras sin permanecer bloqueado esperando la respuesta del sensor.
+&emsp; Durante el funcionamiento normal, la duración del pulso `ECHO` del HC-SR04 se captura mediante una **interrupción por cambio de estado** en el pin D3. En el flanco ascendente, la rutina registra el instante de inicio con `micros()`; en el flanco descendente, calcula la duración total del pulso y marca la disponibilidad de una nueva medición. De esta manera, el microcontrolador puede continuar atendiendo la máquina de estados, el display y las señales sonoras sin permanecer bloqueado esperando la respuesta del sensor.
 
-Las variables compartidas entre la interrupción y el programa principal se declaran como `volatile`. Además, el firmware deshabilita brevemente las interrupciones al copiar o reiniciar esos datos, creando secciones críticas que evitan lecturas parciales o inconsistentes.
+&emsp; Las variables compartidas entre la interrupción y el programa principal se declaran como `volatile`. Además, el firmware deshabilita brevemente las interrupciones al copiar o reiniciar esos datos, creando secciones críticas que evitan lecturas parciales o inconsistentes.
+
 ##
+
+&emsp; 
 
 <p align="center">
   Proyecto diseñado y desarrollado por <strong>Baltazar Patané</strong>.
