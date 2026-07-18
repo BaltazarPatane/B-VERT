@@ -1,7 +1,5 @@
 <h1 align="center">B-VERT</h1>
 
-&emsp; 
-
 <h3 align="center">Medidor portátil de salto vertical</h3>
 
 <p align="center">
@@ -105,14 +103,8 @@ $$
 
 &emsp; Las variables compartidas entre la interrupción y el programa principal se declaran como `volatile`. Además, el firmware deshabilita brevemente las interrupciones al copiar o reiniciar esos datos, creando secciones críticas que evitan lecturas parciales o inconsistentes.
 
-&emsp; 
-
 ##
-
-&emsp; 
 
 <p align="center">
   Proyecto diseñado y desarrollado por <strong>Baltazar Patané</strong>.
 </p>
-
-&emsp; 
