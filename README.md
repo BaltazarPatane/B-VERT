@@ -6,14 +6,6 @@ Sistema electrónico portátil que mide y muestra altura de un salto vertical en
   <img src="Imagenes/Vista_Derecha.png" width="750">
 </p>
 
-<p align="center">
-  <img src="Imagenes/Vista_Frontal.png" width="750">
-</p>
-
-<p align="center">
-  <img src="Imagenes/Vista_Izquierda.png" width="750">
-</p>
-
 ## Descripción
 
 B-VERT detecta el despegue y el aterrizaje de una persona mediante un sensor ultrasónico. A partir del tiempo durante el cual la persona permanece en el aire, calcula la altura alcanzada y muestra el resultado en un display de cuatro dígitos.
@@ -41,9 +33,7 @@ El proyecto integra diseño electrónico, programación de sistemas embebidos y 
 
 La altura se calcula mediante:
 
-\[
-h = \frac{g t^2}{8}
-\]
+h = g * t^2 / 8
 
 donde `t` es el tiempo total de vuelo y `g` es la aceleración de la gravedad.
 
@@ -58,10 +48,6 @@ donde `t` es el tiempo total de vuelo y `g` es la aceleración de la gravedad.
 - Placa experimental y cableado.
 
 ## Diagrama de conexiones
-
-<p align="center">
-  <img src="Imagenes/Esquema.png" width="900">
-</p>
 
 <p align="center">
   <img src="Imagenes/Esquema_2.png" width="900">
