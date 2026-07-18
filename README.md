@@ -1,5 +1,7 @@
 <h1 align="center">B-VERT</h1>
 
+&emsp; 
+
 <h3 align="center">Medidor portátil de salto vertical</h3>
 
 <p align="center">
@@ -57,11 +59,11 @@ La documentación del hardware se encuentra disponible en los siguientes formato
 
 ## Diseño mecánico e impresión 3D
 
-&emsp; La carcasa de B-VERT fue modelada en **Autodesk Fusion 360** y fabricada mediante impresión 3D. Su geometría consiste en una caja rectangular compacta de bordes y esquinas redondeados, pensada para proteger la electrónica y facilitar el transporte y la manipulación del equipo.
+&emsp; La carcasa de B-VERT fue modelada en **Autodesk Fusion 360** y fabricada mediante impresión 3D. Su froma consiste en una caja rectangular compacta de bordes y esquinas redondeados, pensada para proteger la electrónica y facilitar el transporte y la manipulación del equipo.
 
-&emsp; El diseño está dividido en dos cuerpos que se unen mediante una línea perimetral: una base que aloja el Arduino Nano, la placa experimental, el piezoeléctrico y el cableado, y una tapa superior que completa el cerramiento y permite acceder al interior durante el montaje o mantenimiento. En la cara frontal se incorporaron dos aberturas circulares alineadas con el emisor y el receptor del HC-SR04, manteniendo los transductores expuestos sin dejar desprotegido el resto del circuito.
+&emsp; El diseño está dividido de forma horizontal en dos tapas encastrables. Además, en la cara frontal se incorporaron dos aberturas circulares para el emisor y el receptor del HC-SR04, manteniendo los transductores expuestos sin dejar desprotegido el resto del circuito La superficie superior incluye un corte rectangular para el display de cuatro dígitos y el nombre **B-VERT** integrado en la propia pieza, mientras que en uno de los laterales se agregó el recorte para el interruptor de encendido y apagado.
 
-&emsp; La superficie superior incluye un alojamiento rectangular para el display de cuatro dígitos y el nombre **B-VERT** integrado en la propia pieza, lo que refuerza la identidad visual del prototipo sin necesidad de etiquetas externas. En uno de los laterales se agregó el recorte para el interruptor basculante de encendido y apagado. La distribución de las aberturas, los puntos de unión y el volumen interno fue planteada para mantener los componentes firmes, ordenar las conexiones y obtener un conjunto funcional con la menor cantidad posible de piezas.
+&emsp; 
 
 <p align="center">
   <img src="Imagenes/Diseno_3D.png" width="700" alt="Diseño 3D de la carcasa B-VERT">
@@ -94,8 +96,7 @@ $$
 | **`CONTANDO`** | Cronometra el tiempo de vuelo, actualiza la estimación en pantalla y espera la confirmación del aterrizaje. |
 | **`TERMINADO`** | Calcula y muestra la altura definitiva, reproduce el aviso sonoro y prepara un nuevo ciclo. |
 
-&emsp; Esta separación hace que el comportamiento sea **determinista y fácil de mantener**: por ejemplo, una lectura asociada al aterrizaje solo puede procesarse mientras el sistema se encuentra en `CONTANDO`, y nunca durante la inicialización o antes de haber confirmado un despegue.
-
+> Esta separación hace que el comportamiento sea **determinista y fácil de mantener**
 &emsp; 
 
 ### Medición mediante interrupciones
@@ -104,6 +105,8 @@ $$
 
 &emsp; Las variables compartidas entre la interrupción y el programa principal se declaran como `volatile`. Además, el firmware deshabilita brevemente las interrupciones al copiar o reiniciar esos datos, creando secciones críticas que evitan lecturas parciales o inconsistentes.
 
+&emsp; 
+
 ##
 
 &emsp; 
@@ -111,3 +114,5 @@ $$
 <p align="center">
   Proyecto diseñado y desarrollado por <strong>Baltazar Patané</strong>.
 </p>
+
+&emsp; 
